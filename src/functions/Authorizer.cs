@@ -28,7 +28,6 @@ namespace CWE.Lambda.Functions
     }
     public class Authorizer
     {
-        //[LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
         [LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
         public AuthPolicy Authorize(TokenAuthorizerContext input, ILambdaContext context)
         {
