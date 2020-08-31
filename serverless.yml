@@ -32,7 +32,7 @@ package:
 
 functions:
   lambdaAuthorizer:
-    handler: ${self:service}::CWE.APIGateway.Auth.Authorizer::Authorize
+    handler: ${self:service}::CWE.Lambda.Functions.Authorizer::Authorize
   getNotes:
     handler: ${self:service}::CWE.Lambda.Functions.GetNotesFunction::Get
     events: 

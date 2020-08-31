@@ -3,9 +3,10 @@ using System;
 using Amazon.Lambda.Core;
 using Newtonsoft.Json;
 
+using CWE.APIGateway.Auth;
 using CWE.APIGateway.Auth.Model;
 
-namespace CWE.APIGateway.Auth
+namespace CWE.Lambda.Functions
 {
     public class TokenAuthorizerContext
     {
