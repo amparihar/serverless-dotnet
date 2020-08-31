@@ -38,6 +38,7 @@ namespace CWE.APIGateway.Auth
 
                 var principalId = "";
                 AuthPolicyBuilder policyBuilder;
+
                 if (bool.Parse(input.AuthorizationToken))
                 {
                     principalId = "user|u1";
@@ -51,9 +52,9 @@ namespace CWE.APIGateway.Auth
                 }
                 var authResponse = policyBuilder.Build();
 
+                // additional context key-value pairs. "principalId" is implicitly passed in as a key-value pair
                 // context values are  available by APIGW in : context.Authorizer.<key>
-                
-                authResponse.Context.Add("userId", principalId);
+                authResponse.Context.Add("userName","my-user-name");
                 return authResponse;
             }
             catch (Exception ex)
