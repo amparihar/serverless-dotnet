@@ -34,14 +34,14 @@ namespace CWE.APIGateway.Auth
             _stage = string.IsNullOrWhiteSpace(apiOptions?.Stage) ? "*" : apiOptions.Stage;
         }
 
-        public void DenyAll()
+        public void DenyResources(string resource = "*")
         {
-            AddResource(Effect.Deny, "*");
+            AddResource(Effect.Deny, resource);
         }
 
-        public void AllowAll()
+        public void AllowResources(string resource = "*")
         {
-            AddResource(Effect.Allow, "*");
+            AddResource(Effect.Allow, resource);
         }
 
         public AuthPolicy Build()
@@ -85,20 +85,20 @@ namespace CWE.APIGateway.Auth
             if (!_pathRegex.IsMatch(resource))
                 throw new Exception($"Invalid resource path: {resource}. Path should match {_pathRegex}");
 
-            string cleanedResource = resource.First() == '/' ? resource.Substring(1) : resource;
+            string validResource = resource.First() == '/' ? resource.Substring(1) : resource;
 
             switch (effect)
             {
                 case Effect.Deny:
                     _denyMethods.Add(new Method
                     {
-                        ArnResource = resource
+                        ArnResource = validResource
                     });
                     return;
                 case Effect.Allow:
                     _allowMethods.Add(new Method
                     {
-                        ArnResource = resource
+                        ArnResource = validResource
                     });
                     return;
             }

@@ -43,12 +43,12 @@ namespace CWE.APIGateway.Auth
                 {
                     principalId = "user|u1";
                     policyBuilder = new AuthPolicyBuilder(principalId, null);
-                    policyBuilder.AllowAll();
+                    policyBuilder.AllowResources();
                 }
                 else
                 {
                     policyBuilder = new AuthPolicyBuilder(principalId, null);
-                    policyBuilder.DenyAll();
+                    policyBuilder.DenyResources();
                 }
                 var authResponse = policyBuilder.Build();
 
