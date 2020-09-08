@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "dotnet restore && dotnet lambda package --configuration Release --framework netcoreapp3.1 --output-package bin/Release/netcoreapp3.1/deploy-api.zip",
-    "deploy": "npm run build && serverless deploy --verbose --aws-profile amitp"
+    "deploy-stack": "npm run build && serverless deploy --verbose --aws-profile amitp",
+    "remove-stack": "serverless remove --verbose --aws-profile amitp"
   },
   "author": "",
   "license": "ISC"

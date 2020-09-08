@@ -14,7 +14,9 @@ namespace CWE.APIGateway.Auth
         private readonly Regex _pathRegex = new Regex("^[/.a-zA-Z0-9-\\*]+$");
         
         private readonly string _restApiId;
+
         private readonly string _region;
+        
         private readonly string _stage;
 
         public string PrincipalId { get; }
